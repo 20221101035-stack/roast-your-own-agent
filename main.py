@@ -16,6 +16,9 @@ def main() -> None:
     # Exactly one line, no trailing newline: the gate counts characters.
     with open(path, "w", encoding="utf-8", newline="") as f:
         f.write(ROAST)
+    # Verify the bytes landed exactly as intended before exiting.
+    with open(path, encoding="utf-8", newline="") as f:
+        assert f.read() == ROAST, "entry.txt does not match the roast"
 
 
 if __name__ == "__main__":
